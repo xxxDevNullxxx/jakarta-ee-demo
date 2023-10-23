@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>it.umana.demo</groupId>
+        <artifactId>jakarta-ee-demo</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>org.example</groupId>
+    <artifactId>calcolatore-ear</artifactId>
+    <packaging>ear</packaging>
+
+    <name>Calcolatore EAR</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>it.umana.demo</groupId>
+            <artifactId>calcolatore-ejb</artifactId>
+            <version>1.0.0</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>it.umana.demo</groupId>
+            <artifactId>calcolatore-war</artifactId>
+            <version>1.0.0</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+</project>

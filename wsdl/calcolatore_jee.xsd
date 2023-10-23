@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:Q1="http://xsd.base.wrapper.dms.z.cata1"
+		xmlns:tns="https://v1.calcolatore.jee.demo.umana.it"
+		targetNamespace="https://v1.calcolatore.jee.demo.umana.it">
+
+	<xsd:import namespace="http://xsd.base.wrapper.dms.z.cata1" schemaLocation="calcolatore_jee_base.xsd"/>
+
+	<xsd:element name="sommaRequest" type="tns:SommaRequest"/>
+	<xsd:element name="sommaResponse" type="tns:SommaResponse"/>
+	<xsd:element name="sottraiRequest" type="tns:SottraiRequest"/>
+	<xsd:element name="sottraiResponse" type="tns:SottraiResponse"/>
+
+
+	<!--================================== S O M M A =============================================================-->
+	<xsd:complexType name="SommaRequest">
+		<xsd:complexContent>
+			<xsd:extension base="Q1:RequestBase">
+				<xsd:sequence>
+					<xsd:element name="addendo" type="xsd:int" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="SommaResponse">
+		<xsd:complexContent>
+			<xsd:extension base="Q1:ResponseBase">
+				<xsd:sequence>
+					<xsd:element name="somma" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<!--================================== S O T T R A Z I O N E ===================================================-->
+	<xsd:complexType name="SottraiRequest">
+		<xsd:complexContent>
+			<xsd:extension base="Q1:RequestBase">
+				<xsd:sequence>
+					<xsd:element name="minuendo" type="xsd:int" />
+					<xsd:element name="sottraendo" type="xsd:int" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="SottraiResponse">
+		<xsd:complexContent>
+			<xsd:extension base="Q1:ResponseBase">
+				<xsd:sequence>
+					<xsd:element name="differenza" type="xsd:int" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+</xsd:schema>

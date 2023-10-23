@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:tns="https://v1.calcolatore.jee.demo.umana.it"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        name="CALCOLATORE_JEE"
+        targetNamespace="https://v1.calcolatore.jee.demo.umana.it"
+>
+    <wsdl:documentation>
+        Servizio aziendale di calcolo. I complessi algoritmi di calcolo vengono finalmente messi a disposizione di tutte
+        le procedure aziendali che ne avranno bisogno.
+    </wsdl:documentation>
+
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import namespace="https://v1.calcolatore.jee.demo.umana.it" schemaLocation="calcolatore_jee.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="sommaRequestMsg">
+        <wsdl:part name="sommaRequest" element="tns:sommaRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="sommaResponseMsg">
+        <wsdl:part name="sommaResponse" element="tns:sommaResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="sottraiRequestMsg">
+        <wsdl:part name="sottraiRequest" element="tns:sottraiRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="sottraiResponseMsg">
+        <wsdl:part name="sottraiResponse" element="tns:sottraiResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="ICalcolatore">
+        <wsdl:operation name="somma">
+            <wsdl:input name="sommaRequest" message="tns:sommaRequestMsg"/>
+            <wsdl:output name="sommaResponse" message="tns:sommaResponseMsg"/>
+        </wsdl:operation>
+        <wsdl:operation name="sottrai">
+            <wsdl:input name="sottraiRequest" message="tns:sottraiRequestMsg"/>
+            <wsdl:output name="sottraiResponse" message="tns:sottraiResponseMsg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="CALCOLATORE_JEE_Binding" type="tns:ICalcolatore">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="somma">
+            <soap:operation soapAction="https://v1.calcolatore.jee.demo.umana.it/somma"/>
+            <wsdl:input name="sommaRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="sommaResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="sottrai">
+            <soap:operation soapAction="https://v1.calcolatore.jee.demo.umana.it/sottrai"/>
+            <wsdl:input name="sottraiRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="sottraiResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="ServizioCalcolatore">
+        <wsdl:port name="CALCOLATORE_JEE_Port" binding="tns:CALCOLATORE_JEE_Binding">
+            <soap:address location="http://localhost/"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

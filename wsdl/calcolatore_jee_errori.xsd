@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://xsd.base.wrapper.dms.z.cata1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:asd="http://xsd.base.wrapper.dms.z.cata1">
+  <xsd:complexType name="ErroreTecnico">
+    <xsd:sequence>
+      <xsd:element name="sistemaSorgente" type="xsd:string"/>
+      <xsd:element name="erroreSorgente" type="xsd:string"/>
+      <xsd:element name="severity" type="xsd:string"/>
+      <xsd:element name="codiceErrore" type="xsd:string"/>
+      <xsd:element name="descrizioneTecnica" type="xsd:string"/>
+      <xsd:element  minOccurs="0" name="descrizioneApplicativa" type="xsd:string"/>
+      <xsd:element  minOccurs="0" name="forzabile" type="xsd:boolean"/>
+      <xsd:element  minOccurs="0" name="codiceEccezione" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="listaMessaggiErrore" type="asd:ErroreTecnico"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

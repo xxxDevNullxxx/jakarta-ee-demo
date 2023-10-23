@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://xsd.base.wrapper.dms.z.cata1"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:asd="http://xsd.base.wrapper.dms.z.cata1">
+  <xsd:include schemaLocation="calcolatore_jee_testata.xsd"/>
+  <xsd:include schemaLocation="calcolatore_jee_errori.xsd"/>
+  <xsd:complexType name="RequestBase">
+    <xsd:sequence>
+      <xsd:element   name="testataTecnica" type="asd:TestataTecnica"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseBase">
+    <xsd:sequence>
+      <xsd:element   name="testataTecnica" type="asd:TestataTecnica"/>
+      <xsd:element   name="esito" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="messaggiEsito" type="xsd:string"/>
+      <xsd:element  minOccurs="0" name="errore" type="asd:ErroreTecnico"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

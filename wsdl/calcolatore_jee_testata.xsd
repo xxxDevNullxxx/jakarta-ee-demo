@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://xsd.base.wrapper.dms.z.cata1"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:asd="http://xsd.base.wrapper.dms.z.cata1">
+  <xsd:complexType name="TestataTecnica">
+    <xsd:sequence>
+      <xsd:element  name="profiloUtente" type="asd:ProfiloUtente"/>
+      <xsd:element  name="infoCorrelazione" type="asd:InfoCorrelazione"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ProfiloUtente">
+    <xsd:sequence>
+      <xsd:element   name="utente">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="7"/>
+            <xsd:maxLength value="15"/>
+            <xsd:pattern value="[\w\d-]{7,15}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element  name="authToken" type="xsd:string"/>
+      <xsd:element  name="companyId" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InfoCorrelazione">
+    <xsd:sequence>
+      <xsd:element   name="idOperazione">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[\d]{8}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element   name="idApplicazioneChiamante" type="xsd:string"/>
+      <xsd:element   name="idSistemaChiamante">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="7"/>
+            <xsd:maxLength value="15"/>
+            <xsd:pattern value="[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element   name="idSessione">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="26"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element   name="idCorrelazione">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="32"/>
+            <xsd:pattern value="[\w\d]{32}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="1"  minOccurs="0" name="livelloOrchestrazione" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>
