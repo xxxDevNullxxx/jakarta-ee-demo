@@ -61,4 +61,22 @@ public class CalcolatoreImpl implements ICalcolatore {
 
         return response;
     }
+
+    @Override
+    public DividiResponse dividi(DividiRequest dividiRequest) {
+        var response = new DividiResponse();
+        response.setTestataTecnica(dividiRequest.getTestataTecnica());
+        try{
+            var quoziente = dividiRequest.getDividendo()/ dividiRequest.getDivisore();
+
+
+            response.setQuoziente(quoziente);
+            response.setEsito("OK");
+        }catch (Exception e){
+            response.setEsito("Errore");
+            response.setEsito("Errore");
+        }
+
+        return response;
+    }
 }
