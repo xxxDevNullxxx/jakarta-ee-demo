@@ -34,6 +34,22 @@
         <wsdl:part name="sottraiResponse" element="tns:sottraiResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="moltiplicaRequestMsg">
+        <wsdl:part name="moltiplicaRequest" element="tns:moltiplicaRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="moltiplicaResponseMsg">
+        <wsdl:part name="moltiplicaResponse" element="tns:moltiplicaResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="dividiRequestMsg">
+        <wsdl:part name="dividiRequest" element="tns:dividiRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="dividiResponseMsg">
+        <wsdl:part name="dividiResponse" element="tns:dividiResponse"/>
+    </wsdl:message>
+
     <wsdl:portType name="ICalcolatore">
         <wsdl:operation name="somma">
             <wsdl:input name="sommaRequest" message="tns:sommaRequestMsg"/>
@@ -42,6 +58,14 @@
         <wsdl:operation name="sottrai">
             <wsdl:input name="sottraiRequest" message="tns:sottraiRequestMsg"/>
             <wsdl:output name="sottraiResponse" message="tns:sottraiResponseMsg"/>
+        </wsdl:operation>
+        <wsdl:operation name="moltiplica">
+            <wsdl:input name="moltiplicaRequest" message="tns:moltiplicaRequestMsg"/>
+            <wsdl:output name="moltiplicaResponse" message="tns:moltiplicaResponseMsg"/>
+        </wsdl:operation>
+        <wsdl:operation name="dividi">
+            <wsdl:input name="dividiRequest" message="tns:dividiRequestMsg"/>
+            <wsdl:output name="dividiResponse" message="tns:dividiResponseMsg"/>
         </wsdl:operation>
     </wsdl:portType>
 
@@ -62,6 +86,24 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="sottraiResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="moltiplica">
+            <soap:operation soapAction="https://v1.calcolatore.jee.demo.umana.it/moltiplica"/>
+            <wsdl:input name="moltiplicaRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="moltiplicaResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="dividi">
+            <soap:operation soapAction="https://v1.calcolatore.jee.demo.umana.it/dividi"/>
+            <wsdl:input name="dividiRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="dividiResponse">
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
