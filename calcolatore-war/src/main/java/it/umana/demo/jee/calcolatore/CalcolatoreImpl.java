@@ -42,4 +42,23 @@ public class CalcolatoreImpl implements ICalcolatore {
 
         return response;
     }
+
+    @Override
+    public MoltiplicaResponse moltiplica(MoltiplicaRequest moltiplicaRequest) {
+        var response = new MoltiplicaResponse();
+        response.setTestataTecnica(moltiplicaRequest.getTestataTecnica());
+        try{
+            var prodotto = moltiplicaRequest.getFattore()
+                    .stream()
+                    .reduce(1, (a,b)-> a*b);
+
+            response.setProdotto(prodotto);
+            response.setEsito("OK");
+        }catch (Exception e){
+            response.setEsito("Errore");
+            response.setEsito("Errore");
+        }
+
+        return response;
+    }
 }
